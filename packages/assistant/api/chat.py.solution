@@ -61,9 +61,9 @@ class Chat:
         )
         # END TODO
         try: 
-            #TODO:E4.1 stream the result
-            out = stream(self.args, res)
+            #TODO:E4.1 stream the result 
             #out = res.choices[0].message.content
+            out = stream(self.args, res)
             #END TODO
             self.add(f"assistant:{out}")
         except:
