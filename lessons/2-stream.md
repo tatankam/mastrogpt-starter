@@ -280,7 +280,7 @@ for line in count_to_zero(10):
   - `STREAM_PORT` always changing
 
 ```python
-sock = args.get("STREAM_HOST")
+sock = args.get("STREAM_HOST")           
 port = int(args.get("STREAM_PORT"))
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((sock, port)) # double parenthesis NOT error
@@ -314,10 +314,8 @@ def stream(args, lines):
 ### `streamock`:  a mock to test the stream
 
 ```python
-import sys; sys.path.append("tests")
-import streamock
-args = streamock.args()
-mock = streamock.start(args)
+
+
 ```
 
 Running the tests:
