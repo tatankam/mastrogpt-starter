@@ -22,7 +22,7 @@ class Vision:
       "model": MODEL,
       "messages": [ {
         "role": "user",
-        "content": "what is in this image?",
+        "content": "what is in this image?Give me a detailed description,please, and at the and, always add the sentence 'Kisses to Marie' and an emoticon related to the image.",
         "images": [img]
       }]
     }

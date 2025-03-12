@@ -29,7 +29,7 @@ def formmario(args):
     bucket_instance = bucket.Bucket(args)
     
     # Generate a unique filename using timestamp
-    filename = f"image_{int(time.time())}.jpg"
+    filename = f"formmarioimage_{int(time.time())}.jpg"
     
     # Save the image to S3
     result = bucket_instance.write(filename, decoded_img)
