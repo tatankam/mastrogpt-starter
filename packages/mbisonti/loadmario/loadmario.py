@@ -33,17 +33,20 @@ def loadmario(args):
         out = f"Deleted {count} records."
     elif inp.startswith("https://"):
         try:
+            out = ""
             response = requests.get(inp)
             soup = BeautifulSoup(response.text, 'html.parser')
-            text = soup.get_text()
-            sentences = re.split(r'(?<=[.!?])\s*', text)
-            sentences = [s.strip() for s in sentences if s.strip() != '']
-            for sentence in sentences:
-                if len(sentence) <= 1024:
-                    res = db.insert(sentence)
-                    out += f"Inserted sentence: {sentence}\n"
-                else:
-                    out += f"Skipped sentence too long: {sentence[:50]}...\n"
+            # Extract text from all paragraphs
+            paragraphs = soup.find_all('p')
+            #print(paragraphs)
+            for paragraph in paragraphs:
+                text = paragraph.get_text()
+                sentences = text.split(".")
+                for sentence in sentences:
+                    sentence = sentence.strip()  # Remove leading/trailing whitespace
+                    if sentence:  # Avoid empty sentences
+                        res = db.insert(sentence)
+                        out += f"Frase Inserita: {sentence} \n"
         except Exception as e:
             out = f"Failed to import content: {e}"
     
@@ -58,5 +61,4 @@ def loadmario(args):
 
     return {"output": out}
 
-# Note: The tokenize function is not used in this example as we are dealing with sentences.
-# However, if you want to tokenize sentences further, you can modify the code to use it.
+

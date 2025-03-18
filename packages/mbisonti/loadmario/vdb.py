@@ -5,6 +5,43 @@ MODEL="mxbai-embed-large:latest"
 DIMENSION=1024
 LIMIT=10
 
+import re
+
+def tokenize(text):
+    tokens = text.split()
+    
+    i = 0
+    while i < len(tokens):
+        token = tokens[i]
+        
+        if re.match(r'\d{1,2}[/-]\d{1,2}[/-]\d{4}', token):
+            pass
+        
+        elif re.match(r"\w+'s", token):
+            token = re.sub(r"(\w+)'s", r"\1 's", token)
+        
+        elif re.match(r"\w+'\w+", token):
+            token = token.replace("'", "")
+        
+        elif re.match(r"\w+-\w+", token):
+            pass
+        
+        elif re.match(r"\d+(,\d+)*", token):
+            pass
+        
+        else:
+            token = re.sub(r"([^\w\s]+)", r" \1 ", token)
+        
+        token = re.sub(r"(\w+)\.", r"\1", token)
+        token = re.sub(r"(\w+),", r"\1", token)
+        token = re.sub(r"U\.S\.A\.", r"U.S.A.", token)
+        
+        tokens[i] = token
+        i += 1
+    
+    return tokens
+
+
 class VectorDB:
 
   def __init__(self, args):

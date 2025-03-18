@@ -7,7 +7,7 @@ import time
 USAGE = "Please upload a picture and I will tell you what I see"
 FORM = [
   {
-    "label": "any pics?",
+    "label": "carica immagine",
     "name": "pic",
     "required": "true",
     "type": "file"
