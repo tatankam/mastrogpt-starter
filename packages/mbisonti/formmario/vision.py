@@ -22,7 +22,9 @@ class Vision:
       "model": MODEL,
       "messages": [ {
         "role": "user",
-        "content": "Please describe shortly what is in this image, and conclude your description with the following text: 'My description is suuuupercomplete' and add two emoticons.",
+        "content": "Is there a perfect circle in this image? Answer ONLY 'There is a circle' if yes, 'No circle' if not.",
+        #"Please analyze the image and describe its content in both English and Italian. Ensure that each description is complete and includes all relevant details. Format the descriptions as a bullet list with the exact prefixes 'EN:' for the English description and 'IT:' for the Italian description. Make sure each description is fully contained within its respective bullet point. Conclude your description with the text: 'My description is suuuupercomplete' and add two emoticons.",
+        #"content": "Please describe shortly, both in english than italian language, what is in this image, and conclude your description with the following text: 'My description is suuuupercomplete' and add two emoticons.",
         "images": [img]
       }]
     }
